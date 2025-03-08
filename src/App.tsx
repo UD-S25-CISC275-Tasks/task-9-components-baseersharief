@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import "./App.css";
 import { ChangeType } from "./components/ChangeType";
 import { RevealAnswer } from "./components/RevealAnswer";
@@ -13,18 +13,18 @@ function App(): JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript
             </header>
-            <hr></hr>
-            <Counter></Counter>
             <hr />
-            <RevealAnswer></RevealAnswer>
+            <Counter />
             <hr />
-            <StartAttempt></StartAttempt>
+            <RevealAnswer />
             <hr />
-            <TwoDice></TwoDice>
+            <StartAttempt />
             <hr />
-            <ChangeType></ChangeType>
+            <TwoDice />
             <hr />
-            <CycleHoliday></CycleHoliday>
+            <ChangeType />
+            <hr />
+            <CycleHoliday />
         </div>
     );
 }
