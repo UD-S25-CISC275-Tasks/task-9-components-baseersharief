@@ -29,7 +29,9 @@ export function ChooseTeam(): React.JSX.Element {
                     {PEOPLE.map((option: string) => (
                         <div key={option} style={{ marginBottom: "4px" }}>
                             <Button
-                                onClick={() => chooseMember(option)}
+                                onClick={() => {
+                                    chooseMember(option);
+                                }}
                                 size="sm"
                             >
                                 {option}
@@ -37,7 +39,12 @@ export function ChooseTeam(): React.JSX.Element {
                         </div>
                     ))}
                     <div style={{ marginBottom: "4px" }}>
-                        <Button onClick={clearTeam} size="sm">
+                        <Button
+                            onClick={() => {
+                                clearTeam();
+                            }}
+                            size="sm"
+                        >
                             Clear Team
                         </Button>
                     </div>
