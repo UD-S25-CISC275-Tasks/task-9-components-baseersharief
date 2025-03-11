@@ -21,11 +21,11 @@ export function TwoDice(): React.JSX.Element {
     }
 
     let result =
-        leftDie === rightDie
-            ? leftDie === 1
-                ? "You Lose"
-                : "You Win"
-            : "Keep Rolling";
+        leftDie === rightDie ?
+            leftDie === 1 ?
+                "You Lose"
+            :   "You Win"
+        :   "Keep Rolling";
 
     return (
         <div>

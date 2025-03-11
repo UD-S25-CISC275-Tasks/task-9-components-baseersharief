@@ -19,7 +19,7 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
         (question) =>
             question.body !== "" ||
             question.expected !== "" ||
-            question.options.length > 0
+            question.options.length > 0,
     );
 }
 
@@ -29,7 +29,7 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
  */
 export function findQuestion(
     questions: Question[],
-    id: number
+    id: number,
 ): Question | null {
     return questions.find((question) => question.id === id) || null;
 }
@@ -87,7 +87,7 @@ export function toCSV(questions: Question[]): string {
     let header = "id,name,options,points,published";
     let rows = questions.map(
         (question) =>
-            `${question.id},${question.name},${question.options.length},${question.points},${question.published}`
+            `${question.id},${question.name},${question.options.length},${question.points},${question.published}`,
     );
     return [header, ...rows].join("\n");
 }
@@ -102,7 +102,7 @@ export function makeAnswers(questions: Question[]): Answer[] {
         questionId: question.id,
         text: "",
         submitted: false,
-        correct: false
+        correct: false,
     }));
 }
 
@@ -134,7 +134,7 @@ export function addNewQuestion(
     questions: Question[],
     id: number,
     name: string,
-    type: QuestionType
+    type: QuestionType,
 ): Question[] {
     const newQuestion: Question = {
         id,
@@ -144,7 +144,7 @@ export function addNewQuestion(
         expected: "",
         options: [],
         points: 1,
-        published: false
+        published: false,
     };
 
     return [...questions, newQuestion];
@@ -158,10 +158,10 @@ export function addNewQuestion(
 export function renameQuestionById(
     questions: Question[],
     targetId: number,
-    newName: string
+    newName: string,
 ): Question[] {
     return questions.map((question) =>
-        question.id === targetId ? { ...question, name: newName } : question
+        question.id === targetId ? { ...question, name: newName } : question,
     );
 }
 
@@ -175,19 +175,19 @@ export function renameQuestionById(
 export function changeQuestionTypeById(
     questions: Question[],
     targetId: number,
-    newQuestionType: QuestionType
+    newQuestionType: QuestionType,
 ): Question[] {
     return questions.map((question) =>
-        question.id === targetId
-            ? {
-                  ...question,
-                  type: newQuestionType,
-                  options:
-                      newQuestionType !== "multiple_choice_question"
-                          ? []
-                          : question.options
-              }
-            : question
+        question.id === targetId ?
+            {
+                ...question,
+                type: newQuestionType,
+                options:
+                    newQuestionType !== "multiple_choice_question" ?
+                        []
+                    :   question.options,
+            }
+        :   question,
     );
 }
 
@@ -205,7 +205,7 @@ export function editOption(
     questions: Question[],
     targetId: number,
     targetOptionIndex: number,
-    newOption: string
+    newOption: string,
 ): Question[] {
     return questions.map((question) => {
         if (question.id === targetId) {
@@ -235,7 +235,7 @@ export function editOption(
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
-    newId: number
+    newId: number,
 ): Question[] {
     let index = questions.findIndex((question) => question.id === targetId);
     if (index === -1) return questions;
@@ -243,11 +243,11 @@ export function duplicateQuestionInArray(
     let duplicatedQuestion = {
         ...questions[index],
         id: newId,
-        name: `Copy of ${questions[index].name}`
+        name: `Copy of ${questions[index].name}`,
     };
     return [
         ...questions.slice(0, index + 1),
         duplicatedQuestion,
-        ...questions.slice(index + 1)
+        ...questions.slice(index + 1),
     ];
 }
