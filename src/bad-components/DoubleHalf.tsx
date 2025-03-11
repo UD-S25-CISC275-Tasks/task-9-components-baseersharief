@@ -7,7 +7,15 @@ function Doubler({
 }: {
     setValue: React.Dispatch<React.SetStateAction<number>>;
 }): React.JSX.Element {
-    return <Button onClick={() => setValue((prev) => prev * 2)}>Double</Button>;
+    return (
+        <Button
+            onClick={() => {
+                setValue((prev) => prev * 2);
+            }}
+        >
+            Double
+        </Button>
+    );
 }
 
 function Halver({
@@ -15,7 +23,15 @@ function Halver({
 }: {
     setValue: React.Dispatch<React.SetStateAction<number>>;
 }): React.JSX.Element {
-    return <Button onClick={() => setValue((prev) => prev / 2)}>Halve</Button>;
+    return (
+        <Button
+            onClick={() => {
+                setValue((prev) => prev / 2);
+            }}
+        >
+            Halve
+        </Button>
+    );
 }
 
 export function DoubleHalf(): React.JSX.Element {
